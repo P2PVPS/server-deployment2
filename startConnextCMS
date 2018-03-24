@@ -1,0 +1,3 @@
+docker run --name mongo -d -p 3500:27017 --rm -v ~/docker-connextcms/db:/data/db mongo
+docker container run --name connextcms -v ~/docker-connextcms/theme:/home/connextcms/theme --link mongo:mongo -p 3000:3000 -p 8080:8080 --rm -it connextcms bash
+

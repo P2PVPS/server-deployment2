@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Add in the path to any merge scripts that you need to run at run-time to merge site templates or plugins.
+#This file is saved in the public directory so that changes persist.
+cd ~/theme/site-template-connextcms/
+./merge-site
+

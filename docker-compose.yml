@@ -1,0 +1,46 @@
+sshd-container:
+  image: sshd-container
+  ports:
+    - "6000-6200:6000-6200"
+  restart: always
+
+openbazaar:
+  image: ob-server
+  ports:
+   - "4001:4001"
+   - "4002:4002"
+   - "9005:9005"
+  volumes:
+   - ~/.p2pvps/openbazaar:/var/lib/openbazaar
+  restart: always
+
+listing-manager:
+  image: listing-manager
+  volumes:
+    - ~/.p2pvps/logs/listing-manager:/usr/src/app/logs
+  restart: always
+
+mongodb:
+  image: mongo
+  ports:
+    - "3500:27017"
+  volumes:
+    - ./data:/data/db
+  command: mongod --smallfiles --logpath=/dev/null # -- quiet
+  restart: always
+
+connextcms:
+  build: .
+  dockerfile: Dockerfile
+  links:
+    - mongodb
+    - openbazaar
+  ports:
+    - "3001:3000"  # ConnextCMS serves website on this port
+    - "9228:9229"  # Node v8 inspector runs on this port
+  volumes:
+    - ./theme:/home/connextcms/theme
+    - ./plugins:/home/connextcms/plugins
+    - ./public:/home/connextcms/public
+    - ~/.p2pvps/logs/p2pvps-server:/home/connextcms/logs
+  restart: always

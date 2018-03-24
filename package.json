@@ -1,0 +1,32 @@
+{
+  "name": "docker-connextcms-p2pvps",
+  "version": "1.0.1",
+  "description": "Server deployment for P2P VPS using Docker",
+  "main": "dummyapp.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-unicorn": "^3.0.1",
+    "prettier": "^1.9.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/P2PVPS/docker-connextcms-p2pvps.git"
+  },
+  "author": "Chris Troutner <chris.troutner@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/P2PVPS/docker-connextcms-p2pvps/issues"
+  },
+  "homepage": "https://github.com/P2PVPS/docker-connextcms-p2pvps#readme"
+}

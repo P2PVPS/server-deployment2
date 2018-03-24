@@ -1,0 +1,2 @@
+#!/bin/bash
+docker container run --name listing-manager --rm -v ~/.p2pvps/logs/listing-manager:/usr/src/app/logs -it listing-manager /bin/bash
