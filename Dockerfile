@@ -20,7 +20,7 @@ RUN useradd -ms /bin/bash p2pvps
 RUN adduser p2pvps sudo
 
 #Set password to 'password' change value below if you want a different password
-RUN echo connextcms:password | chpasswd
+RUN echo p2pvps:password | chpasswd
 
 #Set the working directory to be the connextcms home directory
 WORKDIR /home/p2pvps
@@ -110,6 +110,7 @@ WORKDIR /home/p2pvps
 
 # Clone the p2pvps-server2 repo
 RUN git clone https://github.com/P2PVPS/p2pvps-server2
+WORKDIR /home/p2pvps/p2pvps-server2
 RUN npm install
 
 #WORKDIR /home/connextcms/

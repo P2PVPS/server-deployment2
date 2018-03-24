@@ -29,7 +29,7 @@ mongodb:
   command: mongod --smallfiles --logpath=/dev/null # -- quiet
   restart: always
 
-connextcms:
+p2pvps-server:
   build: .
   dockerfile: Dockerfile
   links:
