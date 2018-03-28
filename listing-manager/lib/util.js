@@ -35,7 +35,7 @@ async function getDevicePublicModel(config, deviceId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/devicePublicData/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/device/${deviceId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
@@ -68,7 +68,7 @@ async function getDevicePrivateModel(config, privateId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/devicePrivateData/${privateId}`,
+      uri: `${config.server}:${config.port}/api/deviceprivatedata/${privateId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
@@ -114,7 +114,7 @@ async function updateExpiration(config, deviceId, timeSelector) {
     // Get the devicePublicData model.
     let options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/devicePublicData/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/device/${deviceId}`,
       json: true,
     };
     const data = await rp(options);
@@ -131,7 +131,7 @@ async function updateExpiration(config, deviceId, timeSelector) {
     // Update the devicePublicModel with a new expiration date.
     options = {
       method: "POST",
-      uri: `${config.server}:${config.port}/api/devicePublicData/${deviceId}/update`,
+      uri: `${config.server}:${config.port}/api/device/${deviceId}/update`,
       body: data.collection,
       json: true,
     };
@@ -154,7 +154,7 @@ async function addRentedDevice(config, deviceId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/rentedDevices/add/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/rentedDevice/add/${deviceId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
@@ -314,8 +314,8 @@ async function removeOBListing(config, deviceData) {
       throw `no obContract model associated with device ${deviceData._id}`;
 
     const options = {
-      method: "GET",
-      uri: `${config.server}:${config.port}/api/ob/removeMarketListing/${obContractId}`,
+      method: "DELETE",
+      uri: `${config.server}:${config.port}/api/obcontract/${obContractId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
@@ -341,7 +341,7 @@ async function getObContractModel(config, deviceId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/obContract/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/obcontract/${deviceId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
