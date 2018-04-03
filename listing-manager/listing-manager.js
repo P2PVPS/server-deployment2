@@ -63,15 +63,18 @@ const Logger = require("./lib/logger.js");
 const logr = new Logger();
 
 // Generate api credentials for OpenBazaar.
-const apiCredentials = openbazaar.getOBAuth(OB_USERNAME, OB_PASSWORD);
 let config = {
   // Config object passed to library functions.
-  apiCredentials: apiCredentials,
   server: SERVER_URL,
   port: SERVER_PORT,
   obPort: OB_SERVER_PORT,
   logr: logr, // Include a handle to the debug logger.
+  clientId: OB_USERNAME,
+  clientSecret: OB_PASSWORD,
 };
+const apiCredentials = openbazaar.getOBAuth(config);
+config.apiCredentials = apiCredentials;
+//console.log(`apiCredentials: ${apiCredentials}`);
 
 // Poll the OpenBazaar (OB) store for new orders and fulfill those orders when
 // they are detected.
