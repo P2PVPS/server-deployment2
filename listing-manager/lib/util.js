@@ -202,15 +202,15 @@ async function getRentedDevices(config) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/rentedDevices/list`,
+      uri: `${config.server}:${config.port}/api/rentedDevices`,
       json: true, // Automatically stringifies the body to JSON
     };
 
     const data = await rp(options);
 
-    if (!data.collection[0]) throw `Could not find a list of rented devices on server.`;
+    if (!data.devices) throw `Could not find a list of rented devices on server.`;
 
-    const retVal = data.collection[0].rentedDevices;
+    const retVal = data.devices;
 
     return retVal;
   } catch (err) {
