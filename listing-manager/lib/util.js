@@ -130,8 +130,8 @@ async function updateExpiration(config, deviceId, timeSelector) {
 
     // Update the devicePublicModel with a new expiration date.
     options = {
-      method: "POST",
-      uri: `${config.server}:${config.port}/api/devices/${deviceId}/update`,
+      method: "PUT",
+      uri: `${config.server}:${config.port}/api/devices/${deviceId}`,
       body: data.device,
       json: true,
     };
