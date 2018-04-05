@@ -132,7 +132,7 @@ async function updateExpiration(config, deviceId, timeSelector) {
     options = {
       method: "PUT",
       uri: `${config.server}:${config.port}/api/devices/${deviceId}`,
-      body: data.device,
+      body: data,
       json: true,
     };
     const updatedData = await rp(options);
