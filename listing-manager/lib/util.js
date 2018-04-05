@@ -35,7 +35,7 @@ async function getDevicePublicModel(config, deviceId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/device/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/devices/${deviceId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
@@ -114,7 +114,7 @@ async function updateExpiration(config, deviceId, timeSelector) {
     // Get the devicePublicData model.
     let options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/device/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/devices/${deviceId}`,
       json: true,
     };
     const data = await rp(options);
@@ -131,7 +131,7 @@ async function updateExpiration(config, deviceId, timeSelector) {
     // Update the devicePublicModel with a new expiration date.
     options = {
       method: "POST",
-      uri: `${config.server}:${config.port}/api/device/${deviceId}/update`,
+      uri: `${config.server}:${config.port}/api/devices/${deviceId}/update`,
       body: data.collection,
       json: true,
     };
@@ -154,7 +154,7 @@ async function addRentedDevice(config, deviceId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/rentedDevice/add/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/renteddevices/add/${deviceId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
@@ -177,7 +177,7 @@ async function removeRentedDevice(config, deviceId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/rentedDevices/remove/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/renteddevices/remove/${deviceId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
@@ -202,7 +202,7 @@ async function getRentedDevices(config) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/rentedDevices`,
+      uri: `${config.server}:${config.port}/api/renteddevices`,
       json: true, // Automatically stringifies the body to JSON
     };
 
