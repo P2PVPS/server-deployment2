@@ -49,10 +49,10 @@ const OB_USERNAME = "yourUsername";
 const OB_PASSWORD = "yourPassword";
 
 // Server Information
-//const SERVER_URL = "http://p2pvps.net";
-const SERVER_URL = "http://localhost";
-//const SERVER_PORT = "80";
-const SERVER_PORT = "3001";
+const SERVER_URL = "http://p2pvps.net";
+//const SERVER_URL = "http://localhost";
+const SERVER_PORT = "80";
+//const SERVER_PORT = "3001";
 const OB_SERVER_PORT = "4002"; // Open Bazaar port
 
 // Create an Express server. Future development will allow serving of webpages and creation of Client API.
