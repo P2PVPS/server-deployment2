@@ -134,6 +134,9 @@ async function updateExpiration(config, deviceId, timeSelector) {
       uri: `${config.server}:${config.port}/api/devices/${deviceId}`,
       body: data,
       json: true,
+      headers: {
+        Authorization: `Bearer ${config.jwt}`,
+      },
     };
     const updatedData = await rp(options);
 
@@ -379,6 +382,45 @@ function validateGuid(guid) {
   return re.test(guid);
 }
 
+async function readAdminFile() {
+  return new Promise(function(resolve, reject) {
+    const filename = `/usr/src/app/auth/system-user-dev.json`;
+
+    fs.readFile(filename, "utf8", function(err, rawdata) {
+      if (err) return reject(err);
+
+      const data = JSON.parse(rawdata);
+      return resolve(data);
+    });
+  });
+}
+
+// Log into the P2P VPS API as an admin and retrieve the JWT token for making
+// API calls.
+async function getToken(config) {
+  try {
+    const options = {
+      method: "POST",
+      uri: `${config.server}:${config.port}/api/auth`,
+      resolveWithFullResponse: true,
+      json: true,
+      body: {
+        username: `${config.adminUser}`,
+        password: `${config.adminPass}`,
+      },
+    };
+
+    const result = await rp(options);
+
+    //console.log(`result: ${JSON.stringify(result, null, 2)}`);
+
+    return result.body.token;
+  } catch (err) {
+    console.error("Error authenticating user in util.js/getToken().");
+    throw err;
+  }
+}
+
 module.exports = {
   getDevicePublicModel,
   getDevicePrivateModel,
@@ -392,4 +434,6 @@ module.exports = {
   removeOBListing,
   getObContractModel,
   validateGuid,
+  getToken,
+  readAdminFile
 };

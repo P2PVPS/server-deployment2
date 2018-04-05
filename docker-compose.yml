@@ -14,12 +14,12 @@ openbazaar:
    - ~/.p2pvps/openbazaar:/var/lib/openbazaar
   restart: always
 
-#listing-manager:
-#  image: listing-manager
-#  volumes:
-#    - ~/.p2pvps/logs/listing-manager:/usr/src/app/logs
-#    - ./.p2pvps/auth:/usr/src/app/auth
-#  restart: always
+listing-manager:
+  image: listing-manager
+  volumes:
+    - ~/.p2pvps/logs/listing-manager:/usr/src/app/logs
+    - ./.p2pvps/auth:/usr/src/app/auth
+  restart: always
 
 mongodb:
   image: mongo

@@ -49,10 +49,11 @@ const OB_USERNAME = "yourUsername";
 const OB_PASSWORD = "yourPassword";
 
 // Server Information
-const SERVER_URL = "http://p2pvps.net";
-//const SERVER_URL = "http://localhost";
-const SERVER_PORT = "80";
-//const SERVER_PORT = "3001";
+const SERVER_URL = "http://localhost";
+const SERVER_PORT = "3001";
+//const SERVER_URL = "http://p2pvps.net";
+//const SERVER_PORT = "80";
+
 const OB_SERVER_PORT = "4002"; // Open Bazaar port
 
 // Create an Express server. Future development will allow serving of webpages and creation of Client API.
@@ -73,6 +74,9 @@ let config = {
   logr: logr, // Include a handle to the debug logger.
   clientId: OB_USERNAME,
   clientSecret: OB_PASSWORD,
+  adminUser: "system",
+  adminPass: "rwkXPk7bOQDZqkmHzu5v",
+  jwt: "",
 };
 const apiCredentials = openbazaar.getOBAuth(config);
 config.apiCredentials = apiCredentials;
@@ -331,5 +335,25 @@ function resetConfig() {
     port: SERVER_PORT,
     obPort: OB_SERVER_PORT,
     logr: logr, // Include a handle to the debug logger.
+    adminUser: "system",
+    adminPass: "",
+    jwt: "",
   };
 }
+
+// Log into the P2P VPS API.
+async function loginAdmin() {
+  try {
+
+    // Retrieve the login credentials from the json file.
+    adminData = await util.readAdminFile();
+    console.log(`adminData: ${JSON.stringify(adminData,null,2)}`)
+
+    // Log in as the admin and get the JWT token.
+    //config.jwt = await util.getToken(config);
+
+  } catch(err) {
+    console.error(`Error in loginAdmin(): `, err);
+  }
+}
+loginAdmin();
