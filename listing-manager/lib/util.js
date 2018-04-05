@@ -40,7 +40,6 @@ async function getDevicePublicModel(config, deviceId) {
     };
 
     const data = await rp(options);
-    console.log(`data: ${JSON.stringify(data, null, 2)}`);
 
     if (data.device === undefined) throw `No devicePublicModel with ID of ${deviceId}`;
 
