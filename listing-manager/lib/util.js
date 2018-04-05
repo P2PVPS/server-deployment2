@@ -121,25 +121,25 @@ async function updateExpiration(config, deviceId, timeSelector) {
     const data = await rp(options);
 
     console.log(
-      `Expiration before: ${data.collection.expiration}, type: ${typeof data.collection.expiration}`
+      `Expiration before: ${data.device.expiration}, type: ${typeof data.device.expiration}`
     );
 
     // Calculate a new expiration date.
     const now = new Date();
     const expirationDate = new Date(now.getTime() + targetTime);
-    data.collection.expiration = expirationDate.toISOString();
+    data.device.expiration = expirationDate.toISOString();
 
     // Update the devicePublicModel with a new expiration date.
     options = {
       method: "POST",
       uri: `${config.server}:${config.port}/api/devices/${deviceId}/update`,
-      body: data.collection,
+      body: data.device,
       json: true,
     };
     const updatedData = await rp(options);
 
     // Verify that the returned value contains the new date.
-    if (updatedData.collection.expiration) return true;
+    if (updatedData.device.expiration) return true;
     return false;
   } catch (err) {
     config.logr.error(`Error in util.js/updateExpiration(): ${err}`);
@@ -348,9 +348,9 @@ async function getObContractModel(config, deviceId) {
 
     const data = await rp(options);
 
-    if (data.collection === undefined) throw `No obContract Model with ID of ${deviceId}`;
+    if (data.device === undefined) throw `No obContract Model with ID of ${deviceId}`;
 
-    return data.collection;
+    return data.device;
   } catch (err) {
     if (err.statusCode >= 500) {
       // Model could not be found. (probably already deleted)
