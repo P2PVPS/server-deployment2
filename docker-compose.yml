@@ -18,6 +18,7 @@ openbazaar:
 #  image: listing-manager
 #  volumes:
 #    - ~/.p2pvps/logs/listing-manager:/usr/src/app/logs
+#    - ./.p2pvps/auth:/usr/src/app/auth
 #  restart: always
 
 mongodb:
@@ -43,5 +44,6 @@ p2pvps-server:
 #    - ./plugins:/home/connextcms/plugins
 #    - ./public:/home/connextcms/public
     - ~/.p2pvps/logs/p2pvps-server:/home/p2pvps/logs
-    - ./persist:/home/p2pvps/p2pvps-server2/persist
+#    - ./persist:/home/p2pvps/p2pvps-server2/persist
+    - ./.p2pvps/auth:/home/p2pvps/p2pvps-server2/persist
   restart: always

@@ -18,6 +18,7 @@ COPY . .
 
 #RUN pwd
 VOLUME /usr/src/app/logs
+VOLUME /usr/src/app/auth
 
 EXPOSE 3434
 CMD [ "npm", "start" ]
