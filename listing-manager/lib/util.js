@@ -325,6 +325,9 @@ async function removeOBListing(config, deviceData) {
       method: "DELETE",
       uri: `${config.server}:${config.port}/api/obcontract/${obContractId}`,
       json: true, // Automatically stringifies the body to JSON
+      headers: {
+        Authorization: `Bearer ${config.jwt}`,
+      },
     };
 
     const data = await rp(options);
@@ -443,5 +446,5 @@ module.exports = {
   validateGuid,
   getToken,
   readAdminFile,
-  sleep
+  sleep,
 };
