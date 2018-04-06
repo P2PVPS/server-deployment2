@@ -75,7 +75,7 @@ let config = {
   clientId: OB_USERNAME,
   clientSecret: OB_PASSWORD,
   adminUser: "system",
-  adminPass: "rwkXPk7bOQDZqkmHzu5v",
+  adminPass: "",
   jwt: "",
 };
 const apiCredentials = openbazaar.getOBAuth(config);
@@ -98,6 +98,13 @@ async function loginAdmin() {
   }
 }
 loginAdmin();
+
+//async function waitForLogin() {
+//  console.log(`Waiting for login...`);
+//  do await util.sleep(1000);
+//  while (config.jwt === "");
+//}
+//waitForLogin();
 
 // Poll the OpenBazaar (OB) store for new orders and fulfill those orders when
 // they are detected.
@@ -185,7 +192,7 @@ async function fulfillNewOrders() {
 const notificationTimer = setInterval(function() {
   fulfillNewOrders();
 }, CHECK_OB_NOTIFICATIONS_INTERVAL);
-fulfillNewOrders();
+//fulfillNewOrders();
 
 // Check all rented devices to ensure their connection is active.
 async function checkRentedDevices() {
@@ -238,7 +245,7 @@ async function checkRentedDevices() {
     }
   }
 }
-checkRentedDevices(); // Call the function immediately.
+//checkRentedDevices(); // Call the function immediately.
 
 // Call checkRentedDevices() every 2 minutees.
 const checkRentedDevicesTimer = setInterval(function() {
@@ -336,7 +343,7 @@ async function checkListedDevices() {
     }
   }
 }
-checkListedDevices(); // Call the function immediately.
+//checkListedDevices(); // Call the function immediately.
 
 // Call checkRentedDevices() every 2 minutees.
 const checkListedDevicesTimer = setInterval(function() {
@@ -353,7 +360,7 @@ function resetConfig() {
     obPort: OB_SERVER_PORT,
     logr: logr, // Include a handle to the debug logger.
     adminUser: "system",
-    adminPass: "",
-    jwt: "",
+    adminPass: config.adminPass,
+    jwt: config.jwt,
   };
 }

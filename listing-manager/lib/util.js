@@ -151,6 +151,10 @@ async function updateExpiration(config, deviceId, timeSelector) {
   }
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // This function adds a deviceId to the rentedDevice list model.
 async function addRentedDevice(config, deviceId) {
   //debugger;
@@ -439,4 +443,5 @@ module.exports = {
   validateGuid,
   getToken,
   readAdminFile,
+  sleep
 };
