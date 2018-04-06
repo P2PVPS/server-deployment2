@@ -45,5 +45,5 @@ p2pvps-server:
 #    - ./public:/home/connextcms/public
     - ~/.p2pvps/logs/p2pvps-server:/home/p2pvps/logs
 #    - ./persist:/home/p2pvps/p2pvps-server2/persist
-    - ./.p2pvps/auth:/home/p2pvps/p2pvps-server2/persist
+    - ~/.p2pvps/auth:/home/p2pvps/p2pvps-server2/persist
   restart: always
