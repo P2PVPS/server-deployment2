@@ -82,6 +82,23 @@ const apiCredentials = openbazaar.getOBAuth(config);
 config.apiCredentials = apiCredentials;
 //console.log(`apiCredentials: ${apiCredentials}`);
 
+// Log into the P2P VPS API.
+async function loginAdmin() {
+  try {
+    // Retrieve the login credentials from the json file.
+    const adminData = await util.readAdminFile();
+    //console.log(`adminData: ${JSON.stringify(adminData, null, 2)}`);
+
+    config.adminPass = adminData.password;
+
+    // Log in as the admin and get the JWT token.
+    config.jwt = await util.getToken(config);
+  } catch (err) {
+    console.error(`Error in loginAdmin(): `, err);
+  }
+}
+loginAdmin();
+
 // Poll the OpenBazaar (OB) store for new orders and fulfill those orders when
 // they are detected.
 async function fulfillNewOrders() {
@@ -340,20 +357,3 @@ function resetConfig() {
     jwt: "",
   };
 }
-
-// Log into the P2P VPS API.
-async function loginAdmin() {
-  try {
-    // Retrieve the login credentials from the json file.
-    const adminData = await util.readAdminFile();
-    //console.log(`adminData: ${JSON.stringify(adminData, null, 2)}`);
-
-    config.adminPass = adminData.password;
-
-    // Log in as the admin and get the JWT token.
-    config.jwt = await util.getToken(config);
-  } catch (err) {
-    console.error(`Error in loginAdmin(): `, err);
-  }
-}
-loginAdmin();
