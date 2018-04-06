@@ -341,10 +341,10 @@ async function removeOBListing(config, deviceData) {
     if (err.statusCode >= 404) {
       //
       config.logr.error(`obContract model could not be found. Skipping.`);
-    } else {
-      //
-      config.logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
+      return false;
     }
+    //
+    config.logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
 
     throw err;
   }
