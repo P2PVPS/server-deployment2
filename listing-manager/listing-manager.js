@@ -344,15 +344,15 @@ function resetConfig() {
 // Log into the P2P VPS API.
 async function loginAdmin() {
   try {
-
     // Retrieve the login credentials from the json file.
-    adminData = await util.readAdminFile();
-    console.log(`adminData: ${JSON.stringify(adminData,null,2)}`)
+    const adminData = await util.readAdminFile();
+    //console.log(`adminData: ${JSON.stringify(adminData, null, 2)}`);
+
+    config.adminPass = adminData.password;
 
     // Log in as the admin and get the JWT token.
-    //config.jwt = await util.getToken(config);
-
-  } catch(err) {
+    config.jwt = await util.getToken(config);
+  } catch (err) {
     console.error(`Error in loginAdmin(): `, err);
   }
 }
