@@ -34,9 +34,9 @@ const app = express();
 const port = 3434;
 
 // Timer intervals.
-const CHECK_OB_NOTIFICATIONS_INTERVAL = 2 * 60000; // 2 minutes
-const CHECK_RENTED_DEVICES_INTERVAL = 5 * 60000; // 5 minutes
-const CHECK_LISTED_DEVICES_INTERVAL = 5 * 60000; // 5 minutes
+const CHECK_OB_NOTIFICATIONS_INTERVAL = 1 * 60000; // 2 minutes
+const CHECK_RENTED_DEVICES_INTERVAL = 2 * 60000; // 5 minutes
+const CHECK_LISTED_DEVICES_INTERVAL = 3 * 60000; // 5 minutes
 
 // Amount of time (mS) a device can go without checking in.
 const MAX_DELAY = 60000 * 10; // 10 minutes.
