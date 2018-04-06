@@ -18,7 +18,7 @@ listing-manager:
   image: listing-manager
   volumes:
     - ~/.p2pvps/logs/listing-manager:/usr/src/app/logs
-    - ./.p2pvps/auth:/usr/src/app/auth
+    - ~/.p2pvps/auth:/usr/src/app/auth
   restart: always
 
 mongodb:
