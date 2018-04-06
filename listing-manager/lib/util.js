@@ -29,6 +29,7 @@
 // Dependencies
 const rp = require("request-promise");
 const openbazaar = require("openbazaar-node");
+const fs = require("fs");
 
 // This function returns a devicePublicModel given the deviceId.
 async function getDevicePublicModel(config, deviceId) {
@@ -435,5 +436,5 @@ module.exports = {
   getObContractModel,
   validateGuid,
   getToken,
-  readAdminFile
+  readAdminFile,
 };
