@@ -350,12 +350,11 @@ async function getObContractModel(config, deviceId) {
     };
 
     const data = await rp(options);
-    console.log(`data: ${JSON.stringify(data,null,2)}`)
-    if (data.device === undefined) throw `No obContract Model with ID of ${deviceId}`;
+    //console.log(`data: ${JSON.stringify(data, null, 2)}`);
+    if (data.obContract === undefined) throw `No obContract Model with ID of ${deviceId}`;
 
-    return data.device;
+    return data.obContract;
   } catch (err) {
-
     if (err.statusCode >= 500) {
       // Model could not be found. (probably already deleted)
       if (err.error.error === "not found") {
@@ -367,7 +366,7 @@ async function getObContractModel(config, deviceId) {
       }
       return false;
     }
-    if(err.toString().indexOf(`No obContrct Model`) !== -1) {
+    if (err.toString().indexOf(`No obContrct Model`) !== -1) {
       config.logr.error(`Error in util.js/getObContractModel().`);
       //config.logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
       throw err;
