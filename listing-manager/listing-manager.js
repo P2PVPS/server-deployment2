@@ -117,7 +117,7 @@ async function fulfillNewOrders() {
 
     // Get NEW notifications.
     const notes = await util.getNewOBNotifications(config);
-    console.log(`notes: ${JSON.stringify(notes,null,2)}`);
+    console.log(`notes: ${JSON.stringify(notes, null, 2)}`);
 
     // For now, assuming I have one order at a time.
     const thisNotice = notes[0];
@@ -126,7 +126,7 @@ async function fulfillNewOrders() {
     if (thisNotice === undefined) return null;
 
     // Exit if the notice is not for an order.
-    if (thisNotice.notification.type !== "order") {
+    if (thisNotice.notification.type !== "orderComplete") {
       logr.debug("Notification returned was not an order. Exiting.");
       return null;
     }
