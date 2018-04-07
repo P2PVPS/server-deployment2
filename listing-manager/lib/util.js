@@ -344,6 +344,7 @@ async function removeOBListing(config, deviceData) {
 
     // Update the devicePublicModel by removing the obContract field.
     const obj = Object.assign({}, deviceData, { obContract: "" });
+    console.log(`obj: ${JSON.stringify(obj, null, 2)}`);
     //deviceData.obContract = "";
     options = {
       method: "PUT",
@@ -356,7 +357,7 @@ async function removeOBListing(config, deviceData) {
     };
     const updatedData = await rp(options);
 
-    if (!updatedData.obContract !== "") throw `Could not remove obContract ID from device model.`;
+    if (updatedData.obContract !== "") throw `Could not remove obContract ID from device model.`;
 
     return true;
   } catch (err) {
