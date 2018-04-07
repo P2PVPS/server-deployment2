@@ -346,7 +346,7 @@ async function removeOBListing(config, deviceData) {
     deviceData.obContract = "";
     options = {
       method: "PUT",
-      uri: `${config.server}:${config.port}/api/devices/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/devices/${deviceData._id}`,
       body: deviceData,
       json: true,
       headers: {
@@ -355,8 +355,7 @@ async function removeOBListing(config, deviceData) {
     };
     const updatedData = await rp(options);
 
-    if (!updatedData.obContract !== "")
-      throw `Could not remove obContract ID from device model.`;
+    if (!updatedData.obContract !== "") throw `Could not remove obContract ID from device model.`;
 
     return true;
   } catch (err) {
