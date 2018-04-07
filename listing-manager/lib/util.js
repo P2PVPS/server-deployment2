@@ -146,7 +146,7 @@ async function updateExpiration(config, deviceId, timeSelector) {
     return false;
   } catch (err) {
     config.logr.error(`Error in util.js/updateExpiration(): ${err}`);
-    config.logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
+    //config.logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
     throw err;
   }
 }
@@ -313,7 +313,7 @@ Password: ${config.devicePrivateData.devicePassword}
 // This function remove the associated obContract model from the server,
 // This also has the effect of removing the listing from the OB store.
 async function removeOBListing(config, deviceData) {
-  console.log(`deviceData: ${JSON.stringify(deviceData, null, 2)}`);
+  //console.log(`deviceData: ${JSON.stringify(deviceData, null, 2)}`);
   try {
     const obContractId = deviceData.obContract;
 
@@ -323,7 +323,7 @@ async function removeOBListing(config, deviceData) {
 
     // Get the contract data before deleting it.
     const obContractModel = await getObContractModel(config, obContractId);
-    console.log(`obContractModel: ${JSON.stringify(obContractModel, null, 2)}`);
+    //console.log(`obContractModel: ${JSON.stringify(obContractModel, null, 2)}`);
 
     // Delete the actual OB listing.
     await openbazaar.removeListing(config, obContractModel.listingSlug);
@@ -351,9 +351,10 @@ async function removeOBListing(config, deviceData) {
       return false;
     }
     //
-    config.logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
+    //config.logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
 
-    throw err;
+    //throw err;
+    return false;
   }
 }
 
