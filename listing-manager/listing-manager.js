@@ -36,7 +36,7 @@ const port = 3434;
 // Timer intervals.
 const CHECK_OB_NOTIFICATIONS_INTERVAL = 1 * 60000; // 2 minutes
 const CHECK_RENTED_DEVICES_INTERVAL = 2 * 60000; // 5 minutes
-const CHECK_LISTED_DEVICES_INTERVAL = 3 * 60000; // 5 minutes
+const CHECK_LISTED_DEVICES_INTERVAL = 1 * 60000; // 5 minutes
 
 // Amount of time (mS) a device can go without checking in.
 const MAX_DELAY = 60000 * 10; // 10 minutes.
@@ -291,6 +291,7 @@ async function checkListedDevices() {
         await util.removeOBListing(config, publicData);
 
         logr.log(`OB listing for ${thisDeviceId} has been removed due to inactivity.`);
+        return true;
       }
 
       // If the device expiration date has been reached, remove the listing.
@@ -302,6 +303,7 @@ async function checkListedDevices() {
         await util.removeOBListing(config, publicData);
 
         logr.log(`OB listing for ${thisDeviceId} has been removed due to expiration date reached.`);
+        return true;
       }
 
       // If the store listing experation has been reached, remove the listing.
