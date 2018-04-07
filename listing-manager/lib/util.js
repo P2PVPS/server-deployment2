@@ -356,7 +356,9 @@ async function removeOBListing(config, deviceData) {
     };
     const updatedData = await rp(options);
 
-    if (updatedData.obContract !== "") throw `Could not remove obContract ID from device model.`;
+    console.log(`updatedData: ${JSON.stringify(updatedData, null, 2)}`);
+    if (updatedData.device.obContract !== "")
+      throw `Could not remove obContract ID from device model.`;
 
     return true;
   } catch (err) {
