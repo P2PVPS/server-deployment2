@@ -71,6 +71,9 @@ async function getDevicePrivateModel(config, privateId) {
       method: "GET",
       uri: `${config.server}:${config.port}/api/deviceprivatedata/${privateId}`,
       json: true, // Automatically stringifies the body to JSON
+      headers: {
+        Authorization: `Bearer ${config.jwt}`,
+      },
     };
 
     const data = await rp(options);
