@@ -39,10 +39,12 @@ const CHECK_RENTED_DEVICES_INTERVAL = 2 * 60000; // 5 minutes
 const CHECK_LISTED_DEVICES_INTERVAL = 1 * 60000; // 5 minutes
 
 // Amount of time (mS) a device can go without checking in.
-const MAX_DELAY = 60000 * 10; // 10 minutes.
+//const MAX_DELAY = 60000 * 10; // 10 minutes.
+const MAX_DELAY = 60000 * 4; // 10 minutes.
 
 // Time to wait for client to voluntarily re-register.
-const BUFFER = 60000 * 5;
+//const BUFFER = 60000 * 5;
+const BUFFER = 60000 * 3;
 
 // OpenBazaar Credentials
 const OB_USERNAME = "yourUsername";

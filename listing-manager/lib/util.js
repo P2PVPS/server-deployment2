@@ -348,7 +348,7 @@ async function removeOBListing(config, deviceData) {
     options = {
       method: "PUT",
       uri: `${config.server}:${config.port}/api/devices/${deviceData._id}`,
-      body: { device: { obj }},
+      body: { device: obj },
       json: true,
       headers: {
         Authorization: `Bearer ${config.jwt}`,
