@@ -329,7 +329,7 @@ async function removeOBListing(config, deviceData) {
     await openbazaar.removeListing(config, obContractModel.listingSlug);
 
     // Delete the obContract model.
-    const options = {
+    let options = {
       method: "DELETE",
       uri: `${config.server}:${config.port}/api/obcontract/${obContractId}`,
       json: true, // Automatically stringifies the body to JSON
@@ -344,7 +344,6 @@ async function removeOBListing(config, deviceData) {
 
     // Update the devicePublicModel by removing the obContract field.
     const obj = Object.assign({}, deviceData, { obContract: "" });
-    console.log(`obj: ${JSON.stringify(obj, null, 2)}`);
     //deviceData.obContract = "";
     options = {
       method: "PUT",
