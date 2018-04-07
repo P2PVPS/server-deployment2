@@ -343,11 +343,12 @@ async function removeOBListing(config, deviceData) {
       throw `Could not remove device ${obContractId} from rentedDevices list model.`;
 
     // Update the devicePublicModel by removing the obContract field.
-    deviceData.obContract = "";
+    const obj = Object.assign({}, deviceData, { obContract: "" });
+    //deviceData.obContract = "";
     options = {
       method: "PUT",
       uri: `${config.server}:${config.port}/api/devices/${deviceData._id}`,
-      body: deviceData,
+      body: obj,
       json: true,
       headers: {
         Authorization: `Bearer ${config.jwt}`,
