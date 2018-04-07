@@ -313,7 +313,7 @@ Password: ${config.devicePrivateData.devicePassword}
 // This function remove the associated obContract model from the server,
 // This also has the effect of removing the listing from the OB store.
 async function removeOBListing(config, deviceData) {
-  //debugger;
+  console.log(`deviceData: ${JSON.stringify(deviceData, null, 2)}`);
   try {
     const obContractId = deviceData.obContract;
 
@@ -321,6 +321,14 @@ async function removeOBListing(config, deviceData) {
     if (obContractId === undefined || obContractId === null)
       throw `no obContract model associated with device ${deviceData._id}`;
 
+    // Get the contract data before deleting it.
+    const obContractModel = await getObContractModel(config, obContractId);
+    console.log(`obContractModel: ${JSON.stringify(obContractModel, null, 2)}`);
+
+    // Delete the actual OB listing.
+    await openbazaar.removeListing(config, obContractModel.listingSlug);
+
+    // Delete the obContract model.
     const options = {
       method: "DELETE",
       uri: `${config.server}:${config.port}/api/obcontract/${obContractId}`,
@@ -329,7 +337,6 @@ async function removeOBListing(config, deviceData) {
         Authorization: `Bearer ${config.jwt}`,
       },
     };
-
     const data = await rp(options);
 
     if (!data.success)
@@ -350,19 +357,19 @@ async function removeOBListing(config, deviceData) {
   }
 }
 
-// This function returns a devicePublicModel given the deviceId.
-// If the device can not be found, it returns false.
-async function getObContractModel(config, deviceId) {
+// This function returns an obContract model given the model id.
+// If the obContract can not be found, it returns false.
+async function getObContractModel(config, contractId) {
   try {
     const options = {
       method: "GET",
-      uri: `${config.server}:${config.port}/api/obcontract/${deviceId}`,
+      uri: `${config.server}:${config.port}/api/obcontract/${contractId}`,
       json: true, // Automatically stringifies the body to JSON
     };
 
     const data = await rp(options);
     //console.log(`data: ${JSON.stringify(data, null, 2)}`);
-    if (data.obContract === undefined) throw `No obContract Model with ID of ${deviceId}`;
+    if (data.obContract === undefined) throw `No obContract Model with ID of ${contractId}`;
 
     return data.obContract;
   } catch (err) {
