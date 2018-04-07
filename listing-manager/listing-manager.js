@@ -117,7 +117,7 @@ async function fulfillNewOrders() {
 
     // Get NEW notifications.
     const notes = await util.getNewOBNotifications(config);
-    console.log(`notes.length: ${notes.length}`);
+    console.log(`notes: ${notes}`);
 
     // For now, assuming I have one order at a time.
     const thisNotice = notes[0];
