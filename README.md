@@ -8,13 +8,6 @@ stack can be illustrated as below, and you can read all the details in
 
 ![Software Stack](server-stack.jpg?raw=true "Software Stack")
 
-Note: This repository was originally forked from the
-[docker-connextcms](https://github.com/christroutner/docker-connextcms)
-parent repository.
-It upgrades the ConnextCMS docker container to use v8 of node.js.
-The software in this repo has been heavily customized and is quite different from
-the original repo.
-
 
 ## Installation (Rough Draft)
 It's assumed that you are starting with a fresh installation of Ubuntu 16.04 LTS
@@ -34,7 +27,7 @@ Again, it focuses on a Ubuntu system.
 the server you're using is 1GB or less.
 [Here is a great tutorial on installing swap memory in Ubuntu 16](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04).
 
-3. Clone this repository in your home directory with the following command:
+3. Clone this repository in your home directory with the following command:<br>
 `git clone https://github.com/P2PVPS/server-deployment2`
 
 * Enter the new `server-deployment2` directory, then initialize the repository
