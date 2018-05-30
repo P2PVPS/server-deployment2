@@ -2,12 +2,14 @@
 
 This repository is a collection of Docker files, orchestrated to work together
 using Docker Compose, in order to support and run the
-[P2P VPS Server](https://github.com/P2PVPS/p2pvps-server). The software
-stack can be illustrated as below, and you can read all the details in [the specifications](http://p2pvps.org/documentation/).
+[P2P VPS Server](https://github.com/P2PVPS/p2pvps-server2). The software
+stack can be illustrated as below, and you can read all the details in
+[the specifications](http://p2pvps.org/documentation/).
 
 ![Software Stack](server-stack.jpg?raw=true "Software Stack")
 
-Note: This repository was originally forked from the [docker-connextcms](https://github.com/christroutner/docker-connextcms)
+Note: This repository was originally forked from the
+[docker-connextcms](https://github.com/christroutner/docker-connextcms)
 parent repository.
 It upgrades the ConnextCMS docker container to use v8 of node.js.
 The software in this repo has been heavily customized and is quite different from
