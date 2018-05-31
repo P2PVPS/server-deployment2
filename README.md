@@ -41,6 +41,10 @@ which lives in its own repository.
 * Enter the `server-deployment/sshd-container` directory and build that image with
 `./buildImage`.
 
+* Enter the `server-deployment` directory and build the server software with
+this comment:<br>
+`docker-compose build`
+
 * Bring all the containers online by running the following command:
 `docker-compose up`. Ensure there are not obvious error messages.
 
@@ -75,27 +79,14 @@ below help you to enter a shell inside the container.
 * `docker container run --name test-container --rm -it <Image ID> bash`
   * This command will run a docker container and drop you into a bash shell. All you need is the image ID.
 
+If you receive the following error message when executing `docker-compose build`: <br>
+_ERROR: Couldn't connect to Docker daemon at http+docker://localunixsocket - is it running?_
+
+Then you need to delete the `data` directory and recreate it with these commands:
+```
+sudo rm -rf data
+mkdir data
+```
 
 # License
-MIT License
-
-Copyright (c) 2018 [Chris Troutner](http://christroutner.com) &
-[P2P VPS Inc](http://p2pvps.org)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+[MIT License](LICENSE.md)
