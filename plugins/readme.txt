@@ -1,1 +1,0 @@
-Clone with Git with this directory any ConnextCMS plugins that you want to include in your installation.

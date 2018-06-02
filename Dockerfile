@@ -74,10 +74,10 @@ VOLUME /home/p2pvps/p2pvps-server2/persist
 RUN sudo chown -R p2pvps /home/p2pvps/p2pvps-server2/persist
 
 RUN npm run docs
-#CMD ["npm", "start"]
+CMD ["npm", "start"]
 
 #Dummy app just to get the container running with docker-compose.
 #You can then enter the container with command: docker exec -it <container ID> /bin/bash
-RUN npm install express
-COPY dummyapp.js dummyapp.js
-CMD ["node", "dummyapp.js"]
+#RUN npm install express
+#COPY dummyapp.js dummyapp.js
+#CMD ["node", "dummyapp.js"]

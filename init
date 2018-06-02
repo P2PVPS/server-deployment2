@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# Ensure bash scripts are executable.
-chmod 775 finalsetup
-chmod 775 merge-site-plugin-files
-chmod 775 mergeandlaunch
-
-# Make needed directories
-mkdir public
-mkdir theme
-mkdir theme/site-template-connextcms
-mv merge-site-plugin-files public/
-
 # Prep OpenBazaar
 mkdir open-bazaar/data
 
