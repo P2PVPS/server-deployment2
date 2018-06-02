@@ -45,8 +45,13 @@ which lives in its own repository.
 this comment:<br>
 `docker-compose build`
 
+  * If you get this error:<br>
+  `ERROR: Couldn't connect to Docker daemon at http+docker://localunixsocket - is it running?`<br>
+  Delete the `data` directory with this command:<br>
+  `sudo rm -rf data`
+
 * Bring all the containers online by running the following command:
-`docker-compose up`. Ensure there are not obvious error messages.
+`docker-compose up`. Ensure there are no obvious error messages.
 
 * Bring the containers down by hitting `Ctrl-C`.
 Once back to a command line, run `docker-compose down` to clean up.
