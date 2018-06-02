@@ -55,16 +55,23 @@ this comment:<br>
 
 * Bring the containers down by hitting `Ctrl-C`.
 Once back to a command line, run `docker-compose down` to clean up.
-Then navigate to the the `openBazaar` directory.
+Then navigate to the the `open-bazaar` directory.
 
 * Customize the config file and then copy it into the data directory with
-`sudo cp config data/`.
+`sudo cp config ~/.p2pvps/openbazaar/`.
 The current config file has username/password set as `yourUsername/yourPassword`,
-and no SSL encryption on connection. Both of these should be updated.
+and no SSL encryption on connection. Both of these should be updated and configured
+as per the OpenBazaar
+[security doc](https://github.com/OpenBazaar/openbazaar-go/blob/master/docs/security.md)
 
 * Go back to the `server-deployment` directory and run the containers again with
 `docker-compose up -d`. The `-d` daemonizes the process, letting it run in the background.
 
+* Now that you have the back end of the server running, follow the directions in the
+[Dashboard repository](https://github.com/OpenBazaar/openbazaar-go/blob/master/docs/security.md)
+to setup the front end.
+
+*To be removed:*
 You can also follow [these nginx instructions](nginx/README.md) to setup nginx
 in front of your Docker container in order to forward traffic from port 80
 (the normal web browser port) to port 3000, and also how to install
