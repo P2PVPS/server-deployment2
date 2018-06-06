@@ -36,7 +36,8 @@ by running `./init`.
 * Initialize and configure the OpenBazaar store by running `./init-open-bazaar`.
 
 * You'll also need to clone and install the [Listing Manager](https://github.com/P2PVPS/listing-manager),
-which lives in its own repository.
+which lives in its own repository. Go there now and follow the installation
+instructions.
 
 * Enter the `server-deployment/sshd-container` directory and build that image with
 `./buildImage`.
@@ -68,7 +69,7 @@ as per the OpenBazaar
 `docker-compose up -d`. The `-d` daemonizes the process, letting it run in the background.
 
 * Now that you have the back end of the server running, follow the directions in the
-[Dashboard repository](https://github.com/OpenBazaar/openbazaar-go/blob/master/docs/security.md)
+[Dashboard repository](https://github.com/P2PVPS/p2pvps-dashboard2)
 to setup the front end.
 
 *To be removed:*
