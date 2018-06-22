@@ -45,15 +45,15 @@ point to your cloned copy of this repository:
 server {
   listen 80 default_server;
   listen [::]:80 default_server;
-  #listen 443 ssl http2 default_server;
-  #listen [::]:443 ssl http2 default_server;
+  listen 443 ssl http2 default_server;
+  listen [::]:443 ssl http2 default_server;
 
   #Edit as appropriate to point to the public file directory.
-  root /home/trout/docker-connextcms/public;
+  root /home/trout/dashboard2/dist;
 
-  server_name example.com www.example.com;
-  #include snippets/ssl-newserver.example.com.conf;
-  #include snippets/ssl-params.conf;
+  server_name p2pvps.net www.p2pvps.net;
+  include snippets/ssl-p2pvps.net.conf;
+  include snippets/ssl-params.conf;
 
   client_max_body_size 50M; #allow file uploads up to 50 MB
 
@@ -77,23 +77,24 @@ server {
       application/rss+xml
       image/svg+xml;
 
-  
+
   #This block prevents browser caching of anything in the /keystone URI.
   #Browser caching will break the ability to log into KeystoneJS.
-  location ^~ /keystone {   
+  location ^~ /api {
     try_files $uri @backend2;
   }
   location @backend2 {
-    proxy_pass http://127.0.0.1:3000;
+    proxy_pass http://127.0.0.1:3001;
     access_log off;
 
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     proxy_set_header Host $host;
+    add_header Access-Control-Allow-Origin *;
 
   }
-  
+
   #This block turns on browser caching of static assets and proxys
   #the connection to the node application running on port 3000.
   location / {
@@ -102,27 +103,30 @@ server {
     #proxy_pass http://127.0.0.1:3000;
     #try_files $uri $uri/ =404;
 
+    root /home/trout/dashboard2/dist;
+
     #http://ksloan.net/configuring-nginx-for-node-js-web-apps-that-serve-both-static-and-dynamic-content/
-    try_files $uri @backend1;    
+    #try_files $uri @backend1;
   }
   location @backend1 {
-    proxy_pass http://127.0.0.1:3000;
+    proxy_pass http://127.0.0.1:3001;
     access_log off;
 
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     proxy_set_header Host $host;
+    add_header Access-Control-Allow-Origin *;
 
   }
 
   #Browser caching
-  location ~*  \.(jpg|jpeg|png|gif|ico|css|js|otf|ttf|woff2)$ {
-    expires 7d;
-  }
-  location ~*  \.(pdf)$ {
-    expires 7d;
-  }
+  #location ~*  \.(jpg|jpeg|png|gif|ico|css|js|otf|ttf|woff2)$ {
+  #  expires 7d;
+  #}
+  #location ~*  \.(pdf)$ {
+  #  expires 7d;
+  #}
 
 }
 ```
