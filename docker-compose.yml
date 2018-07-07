@@ -5,7 +5,7 @@ sshd-container:
   restart: always
 
 openbazaar:
-  image: openbazaar/server:v0.12.0-rc3
+  image: openbazaar/server:v0.12.0
   ports:
    - "4001:4001"
    - "4002:4002"
