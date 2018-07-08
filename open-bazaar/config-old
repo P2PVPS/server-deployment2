@@ -28,7 +28,8 @@
     "AcceptStoreRequests": false,
     "PushTo": [
       "QmY8puEnVx66uEet64gAf4VZRo7oUyMCwG6KdB9KM92EGQ",
-      "QmPPg2qeF3n2KvTRXRZLaTwHCw8JxzF4uZK93RfMoDvf2o"
+      "QmPPg2qeF3n2KvTRXRZLaTwHCw8JxzF4uZK93RfMoDvf2o",
+      "QmPPegaeM4rXfQDF3uu784d93pLEzV8A4zXU7akEgYnTFd"
     ]
   },
   "Datastore": {
@@ -86,8 +87,7 @@
     "PeerID": ""
   },
   "Ipns": {
-    "BackUpAPI": "",
-    "QuerySize": 1,
+    "QuerySize": 5,
     "RecordLifetime": "7d",
     "RepublishPeriod": "24h",
     "ResolveCacheSize": 128,
@@ -140,8 +140,9 @@
     "LowFeeDefault": 20,
     "MaxFee": 2000,
     "MediumFeeDefault": 60,
+    "RPCPassword": "",
+    "RPCUser": "",
     "TrustedPeer": "",
     "Type": "bitcoincash"
   }
 }
-
