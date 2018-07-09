@@ -87,7 +87,7 @@
   },
   "Ipns": {
     "BackUpAPI": "",
-    "QuerySize": 1,
+    "QuerySize": 5,
     "RecordLifetime": "7d",
     "RepublishPeriod": "24h",
     "ResolveCacheSize": 128,
@@ -119,11 +119,17 @@
     ".eth": "",
     ".id": "https://resolver.onename.com/"
   },
-  "SupernodeRouting": {
-    "Servers": null
+  "Routing": {
+    "Type": ""
   },
   "Swarm": {
     "AddrFilters": null,
+    "ConnMgr": {
+      "GracePeriod": "",
+      "HighWater": 0,
+      "LowWater": 0,
+      "Type": ""
+    },
     "DisableBandwidthMetrics": false,
     "DisableNatPortMap": false,
     "DisableRelay": false,
@@ -144,4 +150,3 @@
     "Type": "bitcoincash"
   }
 }
-
