@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Prep OpenBazaar
-mkdir open-bazaar/data
+#mkdir open-bazaar/data
 
 # Create a data directory
 mkdir ~/.p2pvps
