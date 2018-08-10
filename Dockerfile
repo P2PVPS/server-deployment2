@@ -67,17 +67,18 @@ WORKDIR /home/p2pvps
 # Clone the p2pvps-server2 repo
 RUN git clone https://github.com/P2PVPS/p2pvps-server2
 WORKDIR /home/p2pvps/p2pvps-server2
+RUN git checkout unstable
 RUN npm install
 
 #RUN mkdir /home/p2pvps/p2pvps-server2/persist
 VOLUME /home/p2pvps/p2pvps-server2/persist
 RUN sudo chown -R p2pvps /home/p2pvps/p2pvps-server2/persist
 
-RUN npm run docs
-CMD ["npm", "start"]
+#RUN npm run docs
+#CMD ["npm", "start"]
 
 #Dummy app just to get the container running with docker-compose.
 #You can then enter the container with command: docker exec -it <container ID> /bin/bash
-#RUN npm install express
-#COPY dummyapp.js dummyapp.js
-#CMD ["node", "dummyapp.js"]
+RUN npm install express
+COPY dummyapp.js dummyapp.js
+CMD ["node", "dummyapp.js"]
