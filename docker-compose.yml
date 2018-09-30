@@ -5,7 +5,7 @@ sshd-container:
   restart: always
 
 openbazaar:
-  image: p2pvps/ob-server:v0.12.3-rc2
+  image: p2pvps/ob-server:v0.12.4
   ports:
    - "4001:4001"
    - "4002:4002"

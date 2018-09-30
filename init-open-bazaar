@@ -2,5 +2,5 @@
 
 # Initialize OpenBazaar
 sudo rm -rf ~/.p2pvps/openbazaar/*
-docker run --rm -v ~/.p2pvps/openbazaar:/var/lib/openbazaar p2pvps/ob-server:v0.12.3-rc2 init -d /var/lib/openbazaar
-sudo cp open-bazaar/config-0.12.3-rc2 ~/.p2pvps/openbazaar/config
+docker run --rm -v ~/.p2pvps/openbazaar:/var/lib/openbazaar p2pvps/ob-server:v0.12.4 init -d /var/lib/openbazaar
+sudo cp open-bazaar/config-v0.12.4 ~/.p2pvps/openbazaar/config
